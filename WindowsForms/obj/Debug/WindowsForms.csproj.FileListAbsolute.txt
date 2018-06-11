@@ -1,0 +1,15 @@
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form1.resources
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Properties.Resources.resources
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form2.resources
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.ChildForm.resources
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.FormDemo.resources
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.ParentForm.resources
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.AlertInfo.resources
+C:\Users\Administrator\Desktop\WindowsForms\WindowsForms\obj\Debug\WindowsForms.DBTableInfo.resources
