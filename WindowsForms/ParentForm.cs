@@ -18,47 +18,11 @@ namespace WindowsForms
         public ParentForm()
         {
             InitializeComponent();
+
            
         }
         #endregion
         
-
-        private void tsmOpenChildForm_Click(object sender, EventArgs e)
-        {
-            CreateNewForm();
-        }
-
-        private void tsmClose_Click(object sender, EventArgs e)
-        {
-            CloseOpenedForm(childForm);
-        }
-
-        #region functions
-        static ChildForm childForm;
-        private ChildForm CreateNewForm()
-        {
-            childForm = new ChildForm(this);
-            childForm.MdiParent = this;
-            //childForm.startposition = formstartposition.centerscreen;
-            childForm.Show();
-            return childForm;
-        }
-
-        private void CloseOpenedForm(Form openedForm)
-        {
-            try
-            {
-                openedForm.Close();
-            }catch(Exception ex)
-            {
-                MessageBox.Show(Convert.ToString(ex));
-            }
-        }
-       
-        #endregion
-
-        
-
        
         private void tsmiConnectDB_Click(object sender, EventArgs e)
         {
@@ -72,26 +36,19 @@ namespace WindowsForms
         private static string conninfo = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Administrator\Desktop\WebBase.mdb";
         private static OleDbConnection oledb = new OleDbConnection(conninfo);//创建连接实例对象
 
-        public bool isAlertFormOpen = false;
-        AlertInfo output = null;//警告信息提示窗口
+        //public bool isAlertFormOpen = false;
 
-        private void AlertForm_input(string info)
+        AlertInfo output = null; //警报窗口
+        public void AlertForm_input(string info)//显示警报信息
         {
-            if (isAlertFormOpen == false)
+            
+            if (output==null || output.IsDisposed==true)//如果子窗口为空或者被窗口释放了
             {
-                output = new AlertInfo(this, isAlertFormOpen);
-                //output.MdiParent = this;
-                //output.Parent = this.DBPanel;//设置子窗体的容器为父窗体的panel；
-                output.ShowInfo.Text = info;
-                ////output.Dock = DockStyle.Fill;//设置停靠位置，填满父容器；
-                ////output.FormBorderStyle = FormBorderStyle.None;//把子窗口的边框去掉
-                //int width = (this.Size.Width-300) / 2;//动态居中，alertForm的大小为300，300
-                //int heigth = (this.Height-300) / 2;
-                //output.Anchor = AnchorStyles.None;
-                //output.Location = new Point(width,heigth);
-                output.Show();
-                isAlertFormOpen = true;
-            }
+                output = new AlertInfo(this);//警告信息提示窗口
+                output.ShowInfo.Text = info;//把警告信息传递到AlertInfo中去
+
+                output.Show();//显示警告窗口
+            }            
             else
             {
                 output.ShowInfo.Text = info;
@@ -99,22 +56,29 @@ namespace WindowsForms
             }
         }
         private void tsmiConnectDb()//数据库连接按钮
-        {  
-            try
+        {
+            if (oledb != null && oledb.State == ConnectionState.Closed)//如果已经创建了oleDbconnevtion对象并且连接状态为断开
             {
-                oledb.Open();
-                if (oledb.State == ConnectionState.Open && isAlertFormOpen == false)
+                oledb.Open();//数据库连接开启
+                if ( oledb.State == ConnectionState.Open)//连接已开启
                 {
                     AlertForm_input("连接成功");
-                    this.tsslShowConn.Text = "已连接";
+                    this.tsslShowConn.Text = "已连接";   
                 }
                 else
+                {
                     AlertForm_input("连接失败");
+                    this.tsslShowConn.Text = "数据库未连接";
+                }
             }
-            catch (Exception ex)
+            else
             {
-                AlertForm_input(string.Format("已经连接，无需再次连接"));
+                AlertForm_input("数据库已经连接");
+
             }
+
+
+
         }
 
         private void closeConn_Click()//关闭数据库连接按钮

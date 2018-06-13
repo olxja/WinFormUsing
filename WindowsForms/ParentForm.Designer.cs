@@ -140,6 +140,7 @@
             this.Controls.Add(this.ConnState);
             this.Controls.Add(this.DBPanel);
             this.Controls.Add(this.DBoperation);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.DBoperation;
             this.Name = "ParentForm";
